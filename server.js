@@ -7,7 +7,7 @@ import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
-import  Path  from "path";
+import  path  from "path";
 import { fileURLToPath } from "url";
 
 //configure env
@@ -18,7 +18,7 @@ connectDB();
 
 // esmodule fix
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.__dirname(__filename);
+const __dirname = path.dirname(__filename);
 
 //rest object
 const app = express();
@@ -38,8 +38,8 @@ app.use("/api/v1/product", productRoutes);
 // app.get("/", (req, res) => {
 //   res.send("<h1>Welcome to ecommerce app</h1>");
 // });
-app.get('*',function(req,res){
-  res.sendFile(path.join(__dirname, './client/build/index.html'))
+app.use('*',function(req,res){
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
 //PORT
